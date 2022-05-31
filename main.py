@@ -18,7 +18,18 @@ def about_page():
                 'state':'kerala'}
         return jsonify(info)
 
+@app.route('/input', methods=['POST'])
+def input():
+    body = request.json
+    return body
 
+@app.route('/numbers', methods=['POST'])
+def numbers():
+    numbers = request.json
+    sum = 0
+    for number in numbers['num']:
+        sum = sum + number
+    return str(sum)
 
 if __name__ == '__main__':
     app.run(debug=True)
